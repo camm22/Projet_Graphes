@@ -10,5 +10,5 @@ def menu(power, path, graph_choice):
     graph.displayGraph()
 
     graph.areEdgesPositive(True)
-
+    graph.showGraph()
 

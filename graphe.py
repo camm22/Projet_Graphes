@@ -38,6 +38,7 @@ class Graph:
                     G.add_edge(node.name, key)
         nx.draw(G, node_size=100, node_color='r', with_labels=True, font_size=5, width=2.0)
         plt.draw()
+        plt.show()
 
     def doesGraphHaveCircuit(self, power):
         pass
@@ -189,7 +190,7 @@ class Graph:
         self.nb_node = len(self.nodes)
         self.nb_edge = len(self.edges)
 
-        # Updates attributes
+        # Updates attributes.
 
         for node in self.list_node_object:
             node.initializeNode(self.nodes)
