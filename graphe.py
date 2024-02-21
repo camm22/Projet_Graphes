@@ -29,7 +29,7 @@ class Graph:
 
         self.list_graph_file = []  # Stores the different lines contents of the read txt file.
 
-    def showGraph(self):
+    def showGraph(self):  # bonus so ignore this function
         G = nx.Graph()
         for node in self.list_node_object:
             G.add_node(node.name)
