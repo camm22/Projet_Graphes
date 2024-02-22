@@ -33,17 +33,16 @@ while 1:
     # secure entry of the choice of graph to test
 
     if choice == 'q':
-        print(
-            white + "\n###################################################################\n"
-                    "################{-Mise hors tension du programme-}#################\n"
-                    "###################################################################" + normal)
+        print(white + "\n###################################################################\n"
+                      "################{-Mise hors tension du programme-}#################\n"
+                      "###################################################################" + normal)
         break
 
     # the program turns off if the user enters "q"
 
     path = "documents\graphes_de_test\\graphe" + choice + ".txt"
 
-    # creation of the path of the automaton to execute
+    # creation of the path of the graph to execute
 
     menu(True, path, choice)
 

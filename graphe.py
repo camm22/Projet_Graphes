@@ -19,7 +19,7 @@ class Graph:
         self.nb_node = 0  # Stores graph's order.
         self.nodes = []  # Stores node in a list  : nodes = ['1', '2', ...].
         self.nb_edge = 0  # Stores the number of edges contained in the graph.
-        self.edges = []  # Stores the different edges i a list : edges = ['1;2;2', ...] -> node;duration;successor.
+        self.edges = []  # Stores the different edges in a list : edges = ['1;2;2', ...] -> node;duration;successor.
 
         self.max_length_node = 0  # Stores the maximum number of characters in the name of different nodes.
         self.max_length_duration = 0  # Stores the maximum number of characters in the duration of different nodes.
@@ -82,7 +82,8 @@ class Graph:
         Display the value matrix of the graph.
         """
 
-        print(white + bold + ' '*self.max_length_case, end=' ')
+        color = white + bold
+        print(color + ' '*self.max_length_case, end=' ')
 
         for node in self.nodes:
             print(' |' + node + self.space(len(node)), end=' ')
@@ -95,7 +96,14 @@ class Graph:
             print(self.list_node_object[i].name + self.space(len(self.list_node_object[i].name)), end=' ')
 
             for key, value in self.list_node_object[i].edges.items():
-                print(' |' + str(value) + self.space(len(str(value))), end=' ')
+                if value == '*':
+                    temp_color = normal + white
+                elif int(value) < 0:
+                    temp_color = red + bold
+                else:
+                    temp_color = green + bold
+
+                print(' |' + temp_color + str(value) + color + self.space(len(str(value))), end=' ')
 
             if i + 1 == len(self.list_node_object):
                 print(normal)
@@ -137,7 +145,7 @@ class Graph:
             l[i] = len(str(l[i]))
         return max(l)
 
-    def initializeGraph(self):
+    def initializeGraph(self, power):
 
         """
         Loads the graph into memory, assigning the correct data to each graph attribute from the list of lines in
@@ -211,6 +219,11 @@ class Graph:
 
         # Updates other attributes.
 
+        if power:
+            displayInfoInitializeGraph(self)
+
+        # Calling the infoMethod of initializeGraph() if power is True.
+
     def readGraphFromFile(self, path):
 
         """
@@ -228,4 +241,6 @@ class Graph:
 
         # Initialize self.list_graph_file .
 
-        self.initializeGraph()
+        self.initializeGraph(True)
+
+        # Calling the self.initializeGraph() method.

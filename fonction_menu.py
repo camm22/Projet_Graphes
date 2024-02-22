@@ -3,12 +3,17 @@ from graphe import *
 
 def menu(power, path, graph_choice):
 
-    print(yellow + "\n[*]Voici la matrice de valeurs du graphe n°" + graph_choice + " :\n" + normal)
+    print(red + bold + "\n--------[Création du graphe n°" + graph_choice + "]--------\n" + normal)
 
     graph = Graph()
     graph.readGraphFromFile(path)
-    graph.displayGraph()
 
+    pause(my_time_1)
+    print(yellow + "\n[*]Voici la matrice de valeurs du graphe n°" + graph_choice + " :\n" + normal)
+    pause(my_time_2)
+
+    graph.displayGraph()
     graph.areEdgesPositive(True)
-    graph.showGraph()
+
+    #graph.showGraph()
 
