@@ -17,3 +17,4 @@ def menu(power, path, graph_choice):
 
     #graph.showGraph()
 
+    graph.detecter_circuit()

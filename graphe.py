@@ -244,3 +244,34 @@ class Graph:
         self.initializeGraph(True)
 
         # Calling the self.initializeGraph() method.
+
+    def detecter_circuit(self):
+        # Créer un dictionnaire pour stocker les prédécesseurs de chaque étape
+        predecesseurs = {}
+        for ligne in self.list_graph_file:
+            noeud, duree, *pred = ligne.split()
+            predecesseurs[noeud] = pred
+
+        # Initialiser un ensemble pour stocker les étapes sans prédécesseur
+        noeud_sans_predecesseur = {noeud for noeud, preds in predecesseurs.items() if not preds}
+
+        # Boucler jusqu'à ce qu'il n'y ait plus de noeud sans prédécesseur
+        while noeud_sans_predecesseur:
+            # Choisir un noeud sans prédécesseur
+            noeud = noeud_sans_predecesseur.pop()
+            del predecesseurs[noeud]
+            print("Suppression de l'étape:", noeud)
+
+            # Mettre à jour les prédécesseurs des étapes restantes
+            for etapes in predecesseurs.values():
+                if noeud in etapes:
+                    etapes.remove(noeud)
+
+            # Mettre à jour l'ensemble des étapes sans prédécesseur
+            noeud_sans_predecesseur = {noeud for noeud, preds in predecesseurs.items() if not preds}
+
+        # Si des étapes restent avec des prédécesseurs, il y a un circuit
+        if any(predecesseurs.values()):
+            print("Il y a un circuit dans le graphe.")
+        else:
+            print("Aucun circuit dans le graphe.")
