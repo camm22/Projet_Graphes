@@ -28,6 +28,7 @@ class Graph:
         self.list_node_object = []  # Stores the different Object Node : list_node_object = [<Node1>, <Node2>, ...].
 
         self.list_graph_file = []  # Stores the different lines contents of the read txt file.
+        self.circuit = False
 
     def showGraph(self):  # bonus so ignore this function
         G = nx.Graph()
@@ -246,32 +247,46 @@ class Graph:
         # Calling the self.initializeGraph() method.
 
     def detecter_circuit(self):
-        # Créer un dictionnaire pour stocker les prédécesseurs de chaque étape
+        rang = 0
+        detecter_rang = {}
+        # Créer un dictionnaire pour stocker les prédécesseurs de chaque noeud
         predecesseurs = {}
         for ligne in self.list_graph_file:
             noeud, duree, *pred = ligne.split()
             predecesseurs[noeud] = pred
 
-        # Initialiser un ensemble pour stocker les étapes sans prédécesseur
+        # Initialiser un ensemble pour stocker les noeuds sans prédécesseur
         noeud_sans_predecesseur = {noeud for noeud, preds in predecesseurs.items() if not preds}
+        rang = rang + 1
+        detecter_rang[rang] = [noeud for noeud, preds in predecesseurs.items() if not preds]
 
         # Boucler jusqu'à ce qu'il n'y ait plus de noeud sans prédécesseur
         while noeud_sans_predecesseur:
-            # Choisir un noeud sans prédécesseur
-            noeud = noeud_sans_predecesseur.pop()
-            del predecesseurs[noeud]
-            print("Suppression de l'étape:", noeud)
+            while noeud_sans_predecesseur:
+                # Choisir un noeud sans prédécesseur
+                noeud = noeud_sans_predecesseur.pop()
+                del predecesseurs[noeud]
+                print("Suppression de l'étape:", noeud)
 
-            # Mettre à jour les prédécesseurs des étapes restantes
-            for etapes in predecesseurs.values():
-                if noeud in etapes:
-                    etapes.remove(noeud)
+                # Mettre à jour les prédécesseurs des noeuds restantes
+                for etapes in predecesseurs.values():
+                    if noeud in etapes:
+                        etapes.remove(noeud)
 
-            # Mettre à jour l'ensemble des étapes sans prédécesseur
+            # Mettre à jour l'ensemble des noeuds sans prédécesseur
             noeud_sans_predecesseur = {noeud for noeud, preds in predecesseurs.items() if not preds}
-
-        # Si des étapes restent avec des prédécesseurs, il y a un circuit
+            rang += 1
+            detecter_rang[rang] = [noeud for noeud, preds in predecesseurs.items() if not preds]
+        # Si des noeuds restent avec des prédécesseurs, il y a un circuit
         if any(predecesseurs.values()):
             print("Il y a un circuit dans le graphe.")
+            self.circuit = True
         else:
+            self.circuit = False
             print("Aucun circuit dans le graphe.")
+            #q'il n'y a pas de circuit alors je peux afficher les rangs
+            for cle, valeurs in detecter_rang.items():
+                for val in valeurs:
+                    print("Le noeud "+val+" est de rang "+str(cle))
+
+

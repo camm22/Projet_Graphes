@@ -11,7 +11,7 @@ print(red + "\n*Vous pouvez quitter le programme ou revenir en arrière à tout 
 
 choices_list = ['q']
 
-for i in range(1, 4+1):
+for i in range(1, 5+1):
     choices_list.append(str(i))
 
 # Possible value for secure entry
