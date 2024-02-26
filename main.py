@@ -40,10 +40,11 @@ while 1:
 
     # the program turns off if the user enters "q"
 
-    path = "documents\graphes_de_test\\graphe" + choice + ".txt"
+    path = "documents\\graphes_de_test\\graphe" + choice + ".txt"
 
     # creation of the path of the graph to execute
 
     menu(True, path, choice)
+    
 
     # calling the menu function
