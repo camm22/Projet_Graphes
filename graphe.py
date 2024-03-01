@@ -289,6 +289,8 @@ class Graph:
                 for val in valeurs:
                     print("Le noeud "+val+" est de rang "+str(cle))
 
+            self.calendrier_au_plus_tot()
+
     def calendrier_au_plus_tot(self):
 
         predecesseurs = {}
