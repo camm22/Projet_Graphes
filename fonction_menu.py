@@ -18,6 +18,7 @@ def menu(power, path, graph_choice):
     #graph.showGraph()
 
     graph.detecter_circuit()
+    graph.calendrier_au_plus_tot()
     #Dans le cas où il n'y a pas de circuit dans le graphe alors on peut effectuer les calculs des questions 4-5-6 dans le if not
     if not graph.circuit:
         pass

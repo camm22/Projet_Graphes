@@ -289,4 +289,35 @@ class Graph:
                 for val in valeurs:
                     print("Le noeud "+val+" est de rang "+str(cle))
 
+    def calendrier_au_plus_tot(self):
+
+        predecesseurs = {}
+        durée = {}
+        calendrier_au_plus_tot = {}
+        calendrier_au_plus_tard = {}
+        for ligne in self.list_graph_file:
+            noeud, duree_str, *pred = ligne.split()
+            predecesseurs[noeud] = pred
+            durée[noeud] = int(duree_str)
+            
+            
+                
+            for noeud in predecesseurs:
+                
+                if predecesseurs[noeud]:  # Si le nœud a des prédécesseurs
+                    calendrier_au_plus_tot[noeud] = max(calendrier_au_plus_tot[pred] + durée[pred] for pred in predecesseurs[noeud])
+                else:
+                    calendrier_au_plus_tot[noeud] = 0
+
+
+       
+                
+                
+            
+
+                        
+        
+            print("le noeud",noeud," pour calendrier au plus tot",calendrier_au_plus_tot[noeud])
+        
+
 
