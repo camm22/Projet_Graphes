@@ -310,16 +310,86 @@ class Graph:
                     calendrier_au_plus_tot[noeud] = max(calendrier_au_plus_tot[pred] + durée[pred] for pred in predecesseurs[noeud])
                 else:
                     calendrier_au_plus_tot[noeud] = 0
+                
+            
+            
+            
+            print(f"Noeud {noeud}: Début au plus tôt = {calendrier_au_plus_tot[noeud]}")
+            
+        
+        successeurs = {noeud: [] for noeud in predecesseurs}
+        for noeud, preds in predecesseurs.items():
+            for pred in preds:
+                if pred in successeurs:  # Correction pour vérifier l'existence dans successeurs
+                    successeurs[pred].append(noeud)
 
+
+
+    
+        fin_projet = max(calendrier_au_plus_tot.values())
+        calendrier_au_plus_tard = {noeud: fin_projet for noeud in calendrier_au_plus_tot}
+    
+        for noeud in sorted(calendrier_au_plus_tot, key=calendrier_au_plus_tot.get, reverse=True):
+            if successeurs[noeud]:  
+                calendrier_au_plus_tard[noeud] = min(calendrier_au_plus_tard[succ]for succ in successeurs[noeud])-durée[noeud] 
+    
+        for noeud in calendrier_au_plus_tard:
+            print(f"Noeud {noeud}: Début au plus tard = {calendrier_au_plus_tard[noeud]}")
+            
+        
+        chemin_critique=[]
+        marge={}
+        for noeud in calendrier_au_plus_tot:
+            marge_total=calendrier_au_plus_tard[noeud]-calendrier_au_plus_tot[noeud]
+            marge[noeud]=marge_total
+        
+        
+        for noeud,marge in marge.items():
+            print(f"Marge pour le noeud {noeud}: {marge}")
+            if marge==0:
+                chemin_critique.append(noeud)
+
+        chemin_critique = list(dict.fromkeys(chemin_critique))
+
+# Obtention de la première et de la dernière valeur de la première colonne dans list_graph_file
+        premiere_valeur = self.list_graph_file[0][0]  # Première valeur de la première colonne
+        derniere_valeur = self.list_graph_file[-1][0]  # Dernière valeur de la première colonne
+
+# Construction du chemin critique en évitant de dupliquer la première et la dernière valeur
+        chemin_complet = [premiere_valeur] if premiere_valeur not in chemin_critique else []
+        chemin_complet += chemin_critique
+        if derniere_valeur not in chemin_complet:
+            chemin_complet.append(derniere_valeur)
+
+# Conversion du chemin critique en chaîne de caractères pour affichage
+        chemin_critique_str = ", ".join(map(str, chemin_complet))
+
+# Affichage du chemin critique
+        print(f"Le chemin critique est {chemin_critique_str}")
 
        
+       
+            
+                
+
+                
+
+                
+
+
+
+        
+
+        
+        
+
+    
                 
                 
             
 
                         
         
-            print("le noeud",noeud," pour calendrier au plus tot",calendrier_au_plus_tot[noeud])
-        
+            
 
 
