@@ -352,8 +352,8 @@ class Graph:
         chemin_critique = list(dict.fromkeys(chemin_critique))
 
 # Obtention de la première et de la dernière valeur de la première colonne dans list_graph_file
-        premiere_valeur = self.list_graph_file[0][0]  # Première valeur de la première colonne
-        derniere_valeur = self.list_graph_file[-1][0]  # Dernière valeur de la première colonne
+        premiere_valeur = 0  
+        derniere_valeur = len(self.list_graph_file)+1  # Dernière valeur de la première colonne
 
 # Construction du chemin critique en évitant de dupliquer la première et la dernière valeur
         chemin_complet = [premiere_valeur] if premiere_valeur not in chemin_critique else []
@@ -362,7 +362,7 @@ class Graph:
             chemin_complet.append(derniere_valeur)
 
 # Conversion du chemin critique en chaîne de caractères pour affichage
-        chemin_critique_str = ", ".join(map(str, chemin_complet))
+        chemin_critique_str = "--> ".join(map(str, chemin_complet))
 
 # Affichage du chemin critique
         print(f"Le chemin critique est {chemin_critique_str}")
