@@ -316,6 +316,7 @@ class Graph:
             
             print(f"Noeud {noeud}: Début au plus tôt = {calendrier_au_plus_tot[noeud]}")
             
+        print()  
         
         successeurs = {noeud: [] for noeud in predecesseurs}
         for noeud, preds in predecesseurs.items():
@@ -336,6 +337,7 @@ class Graph:
         for noeud in calendrier_au_plus_tard:
             print(f"Noeud {noeud}: Début au plus tard = {calendrier_au_plus_tard[noeud]}")
             
+        print()
         
         chemin_critique=[]
         marge={}
