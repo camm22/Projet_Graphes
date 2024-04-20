@@ -11,7 +11,7 @@ print(red + "\n*Vous pouvez quitter le programme ou revenir en arrière à tout 
 
 choices_list = ['q']
 
-for i in range(1, 5+1):
+for i in range(1, 14+1):
     choices_list.append(str(i))
 
 # Possible value for secure entry
@@ -40,7 +40,7 @@ while 1:
 
     # the program turns off if the user enters "q"
 
-    path = "documents\graphes_de_test\\graphe" + choice + ".txt"
+    path = "documents\graphes_de_test\\table " + choice + ".txt"
 
     # creation of the path of the graph to execute
 

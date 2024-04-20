@@ -243,6 +243,8 @@ class Graph:
         # Initialize self.list_graph_file .
 
         self.initializeGraph(True)
+        self.add_alpha()  # Ajout du nœud alpha après avoir initialisé le graphe
+        self.add_omega()
 
         # Calling the self.initializeGraph() method.
 
@@ -257,7 +259,7 @@ class Graph:
 
         # Initialiser un ensemble pour stocker les noeuds sans prédécesseur
         noeud_sans_predecesseur = {noeud for noeud, preds in predecesseurs.items() if not preds}
-        rang = rang + 1
+
         detecter_rang[rang] = [noeud for noeud, preds in predecesseurs.items() if not preds]
 
         # Boucler jusqu'à ce qu'il n'y ait plus de noeud sans prédécesseur
@@ -369,8 +371,51 @@ class Graph:
 # Affichage du chemin critique
         print(f"Le chemin critique est {chemin_critique_str}")
 
-       
-       
+    def add_alpha(self):
+        # Insérer le nœud alpha dans la liste des nœuds
+        alpha_node = "0 0"
+        self.list_graph_file.insert(0, alpha_node)
+
+        # Créer un dictionnaire pour stocker les prédécesseurs de chaque nœud
+        predecesseurs = {}
+        for ligne in self.list_graph_file:
+            noeud, duree, *pred = ligne.split()
+            predecesseurs[noeud] = pred
+
+        # Initialiser un ensemble pour stocker les nœuds sans prédécesseur
+        noeud_sans_predecesseur = {noeud for noeud, preds in predecesseurs.items() if not preds}
+
+        # Exclure le nœud alpha de la liste des nœuds sans prédécesseur s'il est présent
+        if '0' in noeud_sans_predecesseur:
+            noeud_sans_predecesseur.remove('0')
+
+        # Ajouter 0 à la 3ème colonne pour les nœuds sans prédécesseur
+        for noeud in noeud_sans_predecesseur:
+            self.list_graph_file[self.nodes.index(noeud)] += " 0"
+
+    def add_omega(self):
+        non_predecessors = set()
+        # Créer une liste pour stocker les prédécesseurs potentiels du nœud oméga
+        omega_predecessors = []
+
+        # Parcourir chaque ligne du self.list_graph_file
+        for ligne in self.list_graph_file:
+            noeud, duree, *successeurs = ligne.split()
+            omega_predecessors.extend(successeurs)
+
+        # Recherchez les nœuds qui ne sont pas des successeurs dans les autres lignes
+        omega_predecessors = set(omega_predecessors)
+        for ligne in self.list_graph_file:
+            noeud, duree, *successeurs = ligne.split()
+            if noeud not in non_predecessors:
+                omega_predecessors.add(noeud)
+
+
+
+        # Ajouter le nœud oméga avec ses prédécesseurs à la fin de la liste self.list_graph_file
+        omega_node = f"{len(self.list_graph_file)} 0 {' '.join(omega_predecessors)}"
+        self.list_graph_file.append(omega_node)
+
             
                 
 
