@@ -313,7 +313,7 @@ class Graph:
                 
                 
                 
-                print(f"Noeud {noeud}: Début au plus tôt = {calendrier_au_plus_tot[noeud]}")
+                    print(f"Noeud {noeud}: Début au plus tôt = {calendrier_au_plus_tot[noeud]}")
                 
             print()  
             
@@ -334,15 +334,22 @@ class Graph:
                     calendrier_au_plus_tard[noeud] = min(calendrier_au_plus_tard[succ]for succ in successeurs[noeud])-durée[noeud] 
         
             for noeud in calendrier_au_plus_tard:
-                print(f"Noeud {noeud}: Début au plus tard = {calendrier_au_plus_tard[noeud]}")
+                if noeud == '0':
+                    print(f"Noeud {noeud}: Début au plus tard = 0")
+                else:
+                    print(f"Noeud {noeud}: Début au plus tard = {calendrier_au_plus_tard[noeud]}")
                 
             print()
             
             chemin_critique=[]
             marge={}
             for noeud in calendrier_au_plus_tot:
-                marge_total=calendrier_au_plus_tard[noeud]-calendrier_au_plus_tot[noeud]
-                marge[noeud]=marge_total
+                if noeud == '0':
+                    marge_total=0
+                    marge[noeud]=marge_total
+                else:
+                    marge_total=calendrier_au_plus_tard[noeud]-calendrier_au_plus_tot[noeud]
+                    marge[noeud]=marge_total
             
             
             for noeud,marge in marge.items():
@@ -357,10 +364,9 @@ class Graph:
             derniere_valeur = len(self.list_graph_file)+1  # Dernière valeur de la première colonne
 
     # Construction du chemin critique en évitant de dupliquer la première et la dernière valeur
-            chemin_complet = [premiere_valeur] if premiere_valeur not in chemin_critique else []
+            chemin_complet = [premiere_valeur] if premiere_valeur  in chemin_critique else []
             chemin_complet += chemin_critique
-            if derniere_valeur not in chemin_complet:
-                chemin_complet.append(derniere_valeur)
+            
 
     # Conversion du chemin critique en chaîne de caractères pour affichage
             chemin_critique_str = "--> ".join(map(str, chemin_complet))
