@@ -2,6 +2,7 @@ from fonctions import *
 from node import *
 import networkx as nx
 import matplotlib.pyplot as plt
+from collections import deque
 
 
 class Graph:
@@ -291,85 +292,81 @@ class Graph:
                 for val in valeurs:
                     print("Le noeud "+val+" est de rang "+str(cle))
 
-            self.calendrier_au_plus_tot()
 
-    def calendrier_au_plus_tot(self):
 
-        predecesseurs = {}
-        durée = {}
-        calendrier_au_plus_tot = {}
-        calendrier_au_plus_tard = {}
-        for ligne in self.list_graph_file:
-            noeud, duree_str, *pred = ligne.split()
-            predecesseurs[noeud] = pred
-            durée[noeud] = int(duree_str)
-            
-            
+            predecesseurs = {}
+            durée = {}
+            calendrier_au_plus_tot = {}
+            calendrier_au_plus_tard = {}
+            for ligne in self.list_graph_file:
+                noeud, duree_str, *pred = ligne.split()
+                predecesseurs[noeud] = pred
+                durée[noeud] = int(duree_str)
                 
-            for noeud in predecesseurs:
+            for cle, valeurs in detecter_rang.items():           
+                for noeud in valeurs:
+                    if predecesseurs[noeud]:  # Si le nœud a des prédécesseurs
+                        calendrier_au_plus_tot[noeud] = max(calendrier_au_plus_tot[pred] + durée[pred] for pred in predecesseurs[noeud])
+                    else:
+                        calendrier_au_plus_tot[noeud] = 0
+                    
                 
-                if predecesseurs[noeud]:  # Si le nœud a des prédécesseurs
-                    calendrier_au_plus_tot[noeud] = max(calendrier_au_plus_tot[pred] + durée[pred] for pred in predecesseurs[noeud])
-                else:
-                    calendrier_au_plus_tot[noeud] = 0
                 
+                
+                print(f"Noeud {noeud}: Début au plus tôt = {calendrier_au_plus_tot[noeud]}")
+                
+            print()  
             
-            
-            
-            print(f"Noeud {noeud}: Début au plus tôt = {calendrier_au_plus_tot[noeud]}")
-            
-        print()  
+            successeurs = {noeud: [] for noeud in predecesseurs}
+            for noeud, preds in predecesseurs.items():
+                for pred in preds:
+                    if pred in successeurs:  # Correction pour vérifier l'existence dans successeurs
+                        successeurs[pred].append(noeud)
+
+
+
         
-        successeurs = {noeud: [] for noeud in predecesseurs}
-        for noeud, preds in predecesseurs.items():
-            for pred in preds:
-                if pred in successeurs:  # Correction pour vérifier l'existence dans successeurs
-                    successeurs[pred].append(noeud)
-
-
-
-    
-        fin_projet = max(calendrier_au_plus_tot.values())
-        calendrier_au_plus_tard = {noeud: fin_projet for noeud in calendrier_au_plus_tot}
-    
-        for noeud in sorted(calendrier_au_plus_tot, key=calendrier_au_plus_tot.get, reverse=True):
-            if successeurs[noeud]:  
-                calendrier_au_plus_tard[noeud] = min(calendrier_au_plus_tard[succ]for succ in successeurs[noeud])-durée[noeud] 
-    
-        for noeud in calendrier_au_plus_tard:
-            print(f"Noeud {noeud}: Début au plus tard = {calendrier_au_plus_tard[noeud]}")
+            fin_projet = max(calendrier_au_plus_tot.values())
+            calendrier_au_plus_tard = {noeud: fin_projet for noeud in calendrier_au_plus_tot}
+        
+            for noeud in sorted(calendrier_au_plus_tot, key=calendrier_au_plus_tot.get, reverse=True):
+                if successeurs[noeud]:  
+                    calendrier_au_plus_tard[noeud] = min(calendrier_au_plus_tard[succ]for succ in successeurs[noeud])-durée[noeud] 
+        
+            for noeud in calendrier_au_plus_tard:
+                print(f"Noeud {noeud}: Début au plus tard = {calendrier_au_plus_tard[noeud]}")
+                
+            print()
             
-        print()
-        
-        chemin_critique=[]
-        marge={}
-        for noeud in calendrier_au_plus_tot:
-            marge_total=calendrier_au_plus_tard[noeud]-calendrier_au_plus_tot[noeud]
-            marge[noeud]=marge_total
-        
-        
-        for noeud,marge in marge.items():
-            print(f"Marge pour le noeud {noeud}: {marge}")
-            if marge==0:
-                chemin_critique.append(noeud)
+            chemin_critique=[]
+            marge={}
+            for noeud in calendrier_au_plus_tot:
+                marge_total=calendrier_au_plus_tard[noeud]-calendrier_au_plus_tot[noeud]
+                marge[noeud]=marge_total
+            
+            
+            for noeud,marge in marge.items():
+                print(f"Marge pour le noeud {noeud}: {marge}")
+                if marge==0:
+                    chemin_critique.append(noeud)
 
-        chemin_critique = list(dict.fromkeys(chemin_critique))
+            chemin_critique = list(dict.fromkeys(chemin_critique))
 
-# Obtention de la première et de la dernière valeur de la première colonne dans list_graph_file
-        premiere_valeur = 0  
-        derniere_valeur = len(self.list_graph_file)+1  # Dernière valeur de la première colonne
+    # Obtention de la première et de la dernière valeur de la première colonne dans list_graph_file
+            premiere_valeur = 0  
+            derniere_valeur = len(self.list_graph_file)+1  # Dernière valeur de la première colonne
 
-# Construction du chemin critique en évitant de dupliquer la première et la dernière valeur
-        chemin_complet = [premiere_valeur] if premiere_valeur not in chemin_critique else []
-        chemin_complet += chemin_critique
-        if derniere_valeur not in chemin_complet:
-            chemin_complet.append(derniere_valeur)
+    # Construction du chemin critique en évitant de dupliquer la première et la dernière valeur
+            chemin_complet = [premiere_valeur] if premiere_valeur not in chemin_critique else []
+            chemin_complet += chemin_critique
+            if derniere_valeur not in chemin_complet:
+                chemin_complet.append(derniere_valeur)
 
-# Conversion du chemin critique en chaîne de caractères pour affichage
-        chemin_critique_str = "--> ".join(map(str, chemin_complet))
+    # Conversion du chemin critique en chaîne de caractères pour affichage
+            chemin_critique_str = "--> ".join(map(str, chemin_complet))
 
-# Affichage du chemin critique
-        print(f"Le chemin critique est {chemin_critique_str}")
+    # Affichage du chemin critique
+            print(f"Le chemin critique est {chemin_critique_str}")
 
     def add_alpha(self):
         # Insérer le nœud alpha dans la liste des nœuds
@@ -415,28 +412,3 @@ class Graph:
         # Ajouter le nœud oméga avec ses prédécesseurs à la fin de la liste self.list_graph_file
         omega_node = f"{len(self.list_graph_file)} 0 {' '.join(omega_predecessors)}"
         self.list_graph_file.append(omega_node)
-
-            
-                
-
-                
-
-                
-
-
-
-        
-
-        
-        
-
-    
-                
-                
-            
-
-                        
-        
-            
-
-
