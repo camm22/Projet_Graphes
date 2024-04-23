@@ -1,0 +1,88 @@
+[-]Le programme possède actuellement 14 graphes. Lequel voulez-vous exécuter ?
+ ---> :11
+
+--------[Création du graphe n°11]--------
+
+{•} Nombre de sommets : 10
+
+{•} Sommets : (0 ) (1 ) (2 ) (3 ) (4 )
+              (5 ) (6 ) (7 ) (8 ) (9 )
+
+
+{•} Nombre d'arcs : 16
+
+{•} Arcs : (0 )-[0 ]->(9 )  (1 )-[1 ]->(2 )  (1 )-[1 ]->(4 )
+           (1 )-[1 ]->(5 )  (2 )-[1 ]->(3 )  (2 )-[1 ]->(8 )
+           (3 )-[4 ]->(7 )  (4 )-[2 ]->(2 )  (4 )-[2 ]->(6 )
+           (4 )-[2 ]->(8 )  (5 )-[5 ]->(4 )  (5 )-[5 ]->(6 )
+           (5 )-[5 ]->(7 )  (6 )-[6 ]->(8 )  (7 )-[3 ]->(8 )
+           (8 )-[0 ]->(9 )
+[*]Voici la matrice de valeurs du graphe n°11 :
+
+    |0   |1   |2   |3   |4   |5   |6   |7   |8   |9  
+0   |*   |*   |*   |*   |*   |*   |*   |*   |*   |0  
+1   |*   |*   |1   |*   |1   |1   |*   |*   |*   |*  
+2   |*   |*   |*   |1   |*   |*   |*   |*   |1   |*  
+3   |*   |*   |*   |*   |*   |*   |*   |4   |*   |*  
+4   |*   |*   |2   |*   |*   |*   |2   |*   |2   |*  
+5   |*   |*   |*   |*   |5   |*   |5   |5   |*   |*  
+6   |*   |*   |*   |*   |*   |*   |*   |*   |6   |*  
+7   |*   |*   |*   |*   |*   |*   |*   |*   |3   |*  
+8   |*   |*   |*   |*   |*   |*   |*   |*   |*   |0  
+9   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*  
+
+   [•]Ce graphe ne possède pas d'arc négatif.
+Suppression de l'étape: 0
+Suppression de l'étape: 1
+Suppression de l'étape: 5
+Suppression de l'étape: 4
+Suppression de l'étape: 6
+Suppression de l'étape: 2
+Suppression de l'étape: 3
+Suppression de l'étape: 7
+Suppression de l'étape: 8
+Suppression de l'étape: 9
+Aucun circuit dans le graphe.
+Le noeud 0 est de rang 0
+Le noeud 1 est de rang 1
+Le noeud 5 est de rang 2
+Le noeud 4 est de rang 3
+Le noeud 2 est de rang 4
+Le noeud 6 est de rang 4
+Le noeud 3 est de rang 5
+Le noeud 7 est de rang 6
+Le noeud 8 est de rang 7
+Le noeud 9 est de rang 8
+Noeud 0: Début au plus tôt = 0
+Noeud 1: Début au plus tôt = 0
+Noeud 5: Début au plus tôt = 1
+Noeud 4: Début au plus tôt = 6
+Noeud 2: Début au plus tôt = 8
+Noeud 6: Début au plus tôt = 8
+Noeud 3: Début au plus tôt = 9
+Noeud 7: Début au plus tôt = 13
+Noeud 8: Début au plus tôt = 16
+Noeud 9: Début au plus tôt = 16
+
+Noeud 0: Début au plus tard = 0
+Noeud 1: Début au plus tard = 0
+Noeud 5: Début au plus tard = 1
+Noeud 4: Début au plus tard = 6
+Noeud 2: Début au plus tard = 8
+Noeud 6: Début au plus tard = 10
+Noeud 3: Début au plus tard = 9
+Noeud 7: Début au plus tard = 13
+Noeud 8: Début au plus tard = 16
+Noeud 9: Début au plus tard = 16
+
+Marge pour le noeud 0: 0
+Marge pour le noeud 1: 0
+Marge pour le noeud 5: 0
+Marge pour le noeud 4: 0
+Marge pour le noeud 2: 0
+Marge pour le noeud 6: 2
+Marge pour le noeud 3: 0
+Marge pour le noeud 7: 0
+Marge pour le noeud 8: 0
+Marge pour le noeud 9: 0
+Le chemin critique est 0--> 1--> 5--> 4--> 2--> 3--> 7--> 8--> 9

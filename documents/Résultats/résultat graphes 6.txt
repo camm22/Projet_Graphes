@@ -1,0 +1,114 @@
+[-]Le programme possède actuellement 14 graphes. Lequel voulez-vous exécuter ?
+ ---> :6
+
+--------[Création du graphe n°6]--------
+
+{•} Nombre de sommets : 14
+
+{•} Sommets : (0 ) (1 ) (2 ) (3 ) (4 )
+              (5 ) (6 ) (7 ) (8 ) (9 )
+              (10) (11) (12) (13)
+
+{•} Nombre d'arcs : 22
+
+{•} Arcs : (0 )-[0 ]->(13)  (1 )-[10]->(3 )  (1 )-[10]->(4 )
+           (1 )-[10]->(12)  (2 )-[10]->(3 )  (2 )-[10]->(4 )
+           (3 )-[9 ]->(9 )  (3 )-[9 ]->(10)  (4 )-[5 ]->(5 )
+           (4 )-[5 ]->(7 )  (4 )-[5 ]->(9 )  (5 )-[4 ]->(6 )
+           (5 )-[4 ]->(8 )  (6 )-[2 ]->(11)  (6 )-[2 ]->(12)
+           (7 )-[2 ]->(8 )  (8 )-[4 ]->(11)  (9 )-[8 ]->(8 )
+           (9 )-[8 ]->(10)  (10)-[12]->(11)  (11)-[2 ]->(13)
+           (12)-[20]->(13)
+[*]Voici la matrice de valeurs du graphe n°6 :
+
+    |0   |1   |2   |3   |4   |5   |6   |7   |8   |9   |10  |11  |12  |13 
+0   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |0  
+1   |*   |*   |*   |10  |10  |*   |*   |*   |*   |*   |*   |*   |10  |*  
+2   |*   |*   |*   |10  |10  |*   |*   |*   |*   |*   |*   |*   |*   |*  
+3   |*   |*   |*   |*   |*   |*   |*   |*   |*   |9   |9   |*   |*   |*  
+4   |*   |*   |*   |*   |*   |5   |*   |5   |*   |5   |*   |*   |*   |*  
+5   |*   |*   |*   |*   |*   |*   |4   |*   |4   |*   |*   |*   |*   |*  
+6   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |2   |2   |*  
+7   |*   |*   |*   |*   |*   |*   |*   |*   |2   |*   |*   |*   |*   |*  
+8   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |4   |*   |*  
+9   |*   |*   |*   |*   |*   |*   |*   |*   |8   |*   |8   |*   |*   |*  
+10  |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |12  |*   |*  
+11  |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |2  
+12  |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |20 
+13  |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*  
+
+   [•]Ce graphe ne possède pas d'arc négatif.
+Suppression de l'étape: 0
+Suppression de l'étape: 1
+Suppression de l'étape: 2
+Suppression de l'étape: 4
+Suppression de l'étape: 3
+Suppression de l'étape: 7
+Suppression de l'étape: 9
+Suppression de l'étape: 5
+Suppression de l'étape: 8
+Suppression de l'étape: 10
+Suppression de l'étape: 6
+Suppression de l'étape: 12
+Suppression de l'étape: 11
+Suppression de l'étape: 13
+Aucun circuit dans le graphe.
+Le noeud 0 est de rang 0
+Le noeud 1 est de rang 1
+Le noeud 2 est de rang 1
+Le noeud 3 est de rang 2
+Le noeud 4 est de rang 2
+Le noeud 5 est de rang 3
+Le noeud 7 est de rang 3
+Le noeud 9 est de rang 3
+Le noeud 6 est de rang 4
+Le noeud 8 est de rang 4
+Le noeud 10 est de rang 4
+Le noeud 11 est de rang 5
+Le noeud 12 est de rang 5
+Le noeud 13 est de rang 6
+Noeud 0: Début au plus tôt = 0
+Noeud 1: Début au plus tôt = 0
+Noeud 2: Début au plus tôt = 0
+Noeud 3: Début au plus tôt = 10
+Noeud 4: Début au plus tôt = 10
+Noeud 5: Début au plus tôt = 15
+Noeud 7: Début au plus tôt = 15
+Noeud 9: Début au plus tôt = 19
+Noeud 6: Début au plus tôt = 19
+Noeud 8: Début au plus tôt = 27
+Noeud 10: Début au plus tôt = 27
+Noeud 11: Début au plus tôt = 39
+Noeud 12: Début au plus tôt = 21
+Noeud 13: Début au plus tôt = 41
+
+Noeud 0: Début au plus tard = 0
+Noeud 1: Début au plus tard = 0
+Noeud 2: Début au plus tard = 0
+Noeud 3: Début au plus tard = 10
+Noeud 4: Début au plus tard = 10
+Noeud 5: Début au plus tard = 15
+Noeud 7: Début au plus tard = 33
+Noeud 9: Début au plus tard = 19
+Noeud 6: Début au plus tard = 19
+Noeud 8: Début au plus tard = 35
+Noeud 10: Début au plus tard = 27
+Noeud 11: Début au plus tard = 39
+Noeud 12: Début au plus tard = 21
+Noeud 13: Début au plus tard = 41
+
+Marge pour le noeud 0: 0
+Marge pour le noeud 1: 0
+Marge pour le noeud 2: 0
+Marge pour le noeud 3: 0
+Marge pour le noeud 4: 0
+Marge pour le noeud 5: 0
+Marge pour le noeud 7: 18
+Marge pour le noeud 9: 0
+Marge pour le noeud 6: 0
+Marge pour le noeud 8: 8
+Marge pour le noeud 10: 0
+Marge pour le noeud 11: 0
+Marge pour le noeud 12: 0
+Marge pour le noeud 13: 0
+Le chemin critique est 0--> 1--> 2--> 3--> 4--> 5--> 9--> 6--> 10--> 11--> 12--> 13

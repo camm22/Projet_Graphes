@@ -1,0 +1,106 @@
+[-]Le programme possède actuellement 14 graphes. Lequel voulez-vous exécuter ?
+ ---> :4
+
+--------[Création du graphe n°4]--------
+
+{•} Nombre de sommets : 13
+
+{•} Sommets : (0 ) (1 ) (2 ) (3 ) (4 )
+              (5 ) (6 ) (7 ) (8 ) (9 )
+              (10) (11) (12)
+
+{•} Nombre d'arcs : 15
+
+{•} Arcs : (0 )-[0 ]->(12)  (1 )-[3 ]->(4 )  (2 )-[2 ]->(3 )
+           (3 )-[3 ]->(10)  (4 )-[5 ]->(5 )  (4 )-[5 ]->(7 )
+           (4 )-[5 ]->(9 )  (5 )-[4 ]->(6 )  (5 )-[4 ]->(8 )
+           (6 )-[2 ]->(11)  (7 )-[2 ]->(8 )  (8 )-[4 ]->(11)
+           (9 )-[5 ]->(10)  (10)-[1 ]->(12)  (11)-[2 ]->(12)
+
+[*]Voici la matrice de valeurs du graphe n°4 :
+
+    |0   |1   |2   |3   |4   |5   |6   |7   |8   |9   |10  |11  |12 
+0   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |0  
+1   |*   |*   |*   |*   |3   |*   |*   |*   |*   |*   |*   |*   |*  
+2   |*   |*   |*   |2   |*   |*   |*   |*   |*   |*   |*   |*   |*  
+3   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |3   |*   |*  
+4   |*   |*   |*   |*   |*   |5   |*   |5   |*   |5   |*   |*   |*  
+5   |*   |*   |*   |*   |*   |*   |4   |*   |4   |*   |*   |*   |*  
+6   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |2   |*  
+7   |*   |*   |*   |*   |*   |*   |*   |*   |2   |*   |*   |*   |*  
+8   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |4   |*  
+9   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |5   |*   |*  
+10  |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |1  
+11  |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |2  
+12  |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*   |*  
+
+   [•]Ce graphe ne possède pas d'arc négatif.
+Suppression de l'étape: 0
+Suppression de l'étape: 1
+Suppression de l'étape: 2
+Suppression de l'étape: 4
+Suppression de l'étape: 3
+Suppression de l'étape: 7
+Suppression de l'étape: 9
+Suppression de l'étape: 5
+Suppression de l'étape: 8
+Suppression de l'étape: 10
+Suppression de l'étape: 6
+Suppression de l'étape: 11
+Suppression de l'étape: 12
+Aucun circuit dans le graphe.
+Le noeud 0 est de rang 0
+Le noeud 1 est de rang 1
+Le noeud 2 est de rang 1
+Le noeud 3 est de rang 2
+Le noeud 4 est de rang 2
+Le noeud 5 est de rang 3
+Le noeud 7 est de rang 3
+Le noeud 9 est de rang 3
+Le noeud 6 est de rang 4
+Le noeud 8 est de rang 4
+Le noeud 10 est de rang 4
+Le noeud 11 est de rang 5
+Le noeud 12 est de rang 6
+Noeud 0: Début au plus tôt = 0
+Noeud 1: Début au plus tôt = 0
+Noeud 2: Début au plus tôt = 0
+Noeud 3: Début au plus tôt = 2
+Noeud 4: Début au plus tôt = 3
+Noeud 5: Début au plus tôt = 8
+Noeud 7: Début au plus tôt = 8
+Noeud 9: Début au plus tôt = 8
+Noeud 6: Début au plus tôt = 12
+Noeud 8: Début au plus tôt = 12
+Noeud 10: Début au plus tôt = 13
+Noeud 11: Début au plus tôt = 16
+Noeud 12: Début au plus tôt = 18
+
+Noeud 0: Début au plus tard = 0
+Noeud 1: Début au plus tard = 0
+Noeud 2: Début au plus tard = 12
+Noeud 3: Début au plus tard = 14
+Noeud 4: Début au plus tard = 3
+Noeud 5: Début au plus tard = 8
+Noeud 7: Début au plus tard = 10
+Noeud 9: Début au plus tard = 12
+Noeud 6: Début au plus tard = 14
+Noeud 8: Début au plus tard = 12
+Noeud 10: Début au plus tard = 17
+Noeud 11: Début au plus tard = 16
+Noeud 12: Début au plus tard = 18
+
+Marge pour le noeud 0: 0
+Marge pour le noeud 1: 0
+Marge pour le noeud 2: 12
+Marge pour le noeud 3: 12
+Marge pour le noeud 4: 0
+Marge pour le noeud 5: 0
+Marge pour le noeud 7: 2
+Marge pour le noeud 9: 4
+Marge pour le noeud 6: 2
+Marge pour le noeud 8: 0
+Marge pour le noeud 10: 4
+Marge pour le noeud 11: 0
+Marge pour le noeud 12: 0
+Le chemin critique est 0--> 1--> 4--> 5--> 8--> 11--> 12
