@@ -351,16 +351,16 @@ class Graph:
                     marge_total=calendrier_au_plus_tard[noeud]-calendrier_au_plus_tot[noeud]
                     marge[noeud]=marge_total
             
-            l=-1
+            
             for noeud,marge in marge.items():
                 print(f"Marge pour le noeud {noeud}: {marge}")
-                for cle, valeurs in detecter_rang.items():
-                    for val in valeurs:
-                        if l != str(cle):
-                            l = str(cle)
-                        
-                            if marge==0:
-                                chemin_critique.append(val)
+                if marge==0:
+                    if not chemin_critique or len(chemin_critique)==1:
+                        chemin_critique.append(noeud)
+                    else: 
+                        dernier_noeud = chemin_critique[-1]
+                        if noeud in successeurs[dernier_noeud]:
+                            chemin_critique.append(noeud)
 
             chemin_critique = list(dict.fromkeys(chemin_critique))
 
